@@ -8,28 +8,35 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <h1>Agregar una tarea</h1>
-                <input type="text" class="form-control">
+    <div id="appVue">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>Agregar una tarea</h1>
+                    <input type="text" class="form-control">
+                </div>
+                <div class="col-sm-6">
+                    <h1>Lista de tareas</h1>
+                    <ul class="list-group">
+                        <li class="list-group-item" 
+                            v-for="item in lists"
+                            v-bind:class="item.completed == true ? 'disabled' : '' ">
+                            {{ item.keep }}
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-sm-6">
-                <h1>Lista de tareas</h1>
-                <ul class="list-group">
-                    <li class="list-group-item">Item 1</li>
-                    <li class="list-group-item">Item 2</li>
-                </ul>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12">
-                <hr>
-                <pre>
-                    Datos del objeto
-                </pre>
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <pre>
+                        {{ $data | json }}
+                    </pre>
+                </div>
             </div>
         </div>
     </div>
+    <script src="vue-dev.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
